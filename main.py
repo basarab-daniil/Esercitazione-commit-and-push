@@ -30,10 +30,23 @@ def modifica_quantita():
     except ValueError:
         print("Errore: inserisci un numero valido.")
 
+def modifica_prezzo():
+    try:
+        id_prodotto = int(input("Inserisci l'ID del prodotto da modificare: "))
+        if id_prodotto in inventario:
+            nuovo_prezzo = float(input("Inserisci il nuovo prezzo: "))
+            inventario[id_prodotto]["prezzo"] = nuovo_prezzo
+            print("Prezzo aggiornato con successo.")
+        else:
+            print("Errore: ID prodotto non trovato.")
+    except ValueError:
+        print("Errore: inserisci un numero valido.")
+
 while True:
     print("\nMenu:")
     print("1. Aggiungere un prodotto")
     print("2. Modificare la quantità di un prodotto")
+    print("3. Modificare il prezzo di un prodotto")
     print("6. Esci")
     
     scelta = input("Scegli un'opzione: ")
@@ -42,6 +55,8 @@ while True:
         aggiungi_prodotto()
     elif scelta == "2":
         modifica_quantita()
+    elif scelta == "3":
+        modifica_prezzo()
     elif scelta == "6":
         print("Uscita dal programma.")
         break
